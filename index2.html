@@ -7,19 +7,35 @@
     <title>Pag Kick Buttowski characters</title>
     <link rel="stylesheet" href="index2.css">
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #container {
+            text-align: center;
+        }
+
         canvas {
             border: 10px solid rgb(250, 0, 0);
+            margin-top: 20px; /* Ajusta según sea necesario */
         }
-        
+
+        h1 {
+            margin-bottom: 20px; /* Ajusta según sea necesario */
+        }
     </style>
 </head>
 
 <body>
-    <h1>Kick Buttowski characters in motion</h1>
-    <audio id="buttowski-audio" controls></audio>
-</body>
-
-<body>
+    <div id="container">
+        <h1>Kick Buttowski characters in motion</h1>
+        <audio id="buttowski-audio" controls></audio>
+    </div>
     <canvas id="areaDibujo" width="1000" height="1000"></canvas>
     <script>
 
