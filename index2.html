@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,9 +10,14 @@
 </head>
 
 <body>
+    <h1>Kick Buttowski characters in motion</h1>
+    <audio id="buttowski-audio" controls></audio>
+</body>
+
+<body>
     <canvas id="areaDibujo" width="1000" height="1000"></canvas>
     <script>
-        //movimiento de 2 imagenes al tiempo imagenMetroid + imagenKike
+
         var canvas = document.getElementById("areaDibujo");
         var ctx = canvas.getContext("2d");
         var posicionBrad = 0;
@@ -29,6 +32,8 @@
         var imagenHeight = 80;
         var radio = 200; // Ajusta el radio del círculo
         var angulo = 0; // Ángulo inicial
+        var audioElement = document.getElementById('buttowski-audio');//Audio de buttowski en la pagina
+
 
         var imagenBrad = new Image();
         var imagenWade = new Image();
@@ -107,7 +112,7 @@
                 posicionX2Jackie -= 10;
             }
             if (posicionX2Jackie === 0 && posicionY2Jackie === canvas.height - imagenHeight) {
-                // Puedes agregar aquí cualquier acción adicional al completar un ciclo.
+
             }
         }
         function dibujarBriana() {
@@ -141,7 +146,13 @@
         }
 
         setInterval(dibujar, 100);
+
+        audioElement.src = 'file:///C:/Users/JIMMY/Pictures/Kick%20Buttowski%20AUDIO.mp3';
+
+
+        document.body.appendChild(audioElement);
     </script>
+
 </body>
 
 </html>
