@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="areaDibujo" width="1000" height="1000"></canvas>
+    <script>
+        var canvas = document.getElementById("areaDibujo");
+        var ctx = canvas.getContext("2d");
+        var posicionX2 = 1000;
+        var posicionX = 0;
+        var posicionY1 = 0;
+        var posicionY2= 1000;
+        var posicionBradX= 0
+        var posicionBradY= 0
+        var imageKickbuttowski = new Image();
+        imageKickbuttowski.src = 'https://mir-s3-cdn-cf.behance.net/projects/404/25ecb9174493049.Y3JvcCwxNTg1NSwxMjQwMiw4MjQsMA.jpg';
+        imageKickbuttowski.onload = function () {
+            dibujarKick();
+        }
+
+
+        function dibujarKick() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(imageKickbuttowski, posicionX, 255, 100, 100);
+            posicionX += 10;
+
+            if (posicionX >= canvas.width)
+                posicionX = 0
+        }
+
+        setInterval(dibujarKick, 100);
+
+        var imageGunther = new Image();
+        imageGunther.src = 'https://static.wikia.nocookie.net/kickbuttowski/images/3/3d/Gunther.png/revision/latest?cb=20110721224041&path-prefix=es';
+        imageGunther.onload = function () {
+            dibujarGunther();
+        }
+
+
+        function dibujarGunther() {
+            ctx.drawImage(imageGunther, posicionX2, 200, 100, 100);
+            posicionX2 -= 10;
+
+            if (posicionX2 <= 0) {
+                posicionX2 = 1000;
+            }
+        }
+
+        setInterval(dibujarGunther, 100);
+
+        var imageWade = new Image();
+        imageWade.src = 'https://static.wikia.nocookie.net/kick-buttowski-semidoble-profesional-el-regreso/images/8/83/Wade_2.png/revision/latest/scale-to-width-down/186?cb=20130508180304&path-prefix=es';
+        imageWade.onload = function () {
+            dibujarWade();
+        }
+
+
+        function dibujarWade() {
+            ctx.drawImage(imageWade, 0, posicionY1, 100, 100);
+            posicionY1 += 10;
+
+            if (posicionY1 >= canvas.width) {
+                posicionY1 = 0;
+            }
+        }
+
+        setInterval(dibujarWade, 100);
+
+        var imageJackie = new Image();
+        imageJackie.src = 'https://i.pinimg.com/736x/83/92/4f/83924f1919d98443a8a5574eb0c37774.jpg';
+        imageWade.onload = function () {
+            dibujarJackie();
+        }
+
+
+        function dibujarJackie() {
+            ctx.drawImage(imageJackie, 900, posicionY2, 100, 100);
+            posicionY2 -= 10;
+
+            if (posicionY2 <= 0) {
+                posicionY2 = 1000;
+            }
+        }
+
+        setInterval(dibujarJackie, 100);
+
+        var imageBrad =new Image();
+        imageBrad.src = 'https://static.wikia.nocookie.net/disney/images/9/97/BradButtowski.png/revision/latest?cb=20140103155641&path-prefix=es';
+        imageBrad.onload = function () {
+            dibujarBrad();
+        }
+
+
+        function dibujarBrad() {
+            ctx.drawImage(imageBrad, posicionBradX , posicionBradY, 100, 100);
+            posicionBradX+=5;
+            posicionBradY+=5;
+            if (posicionBradX <= 0) {
+                posicionBradY = 1000;
+            }
+        }
+
+        setInterval(dibujarBrad, 100);
+    </script>
+    <!-- <img src="file:///C:/Users/INVITADO10/Desktop/KickButtowski1.jpg"/>    -->
+</body>
+
+</html>
