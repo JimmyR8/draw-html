@@ -1,10 +1,12 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <style>
         canvas {
-            border: 1px solid black;
+            border: 10px solid rgb(250, 0, 0);
         }
     </style>
 </head>
@@ -12,105 +14,134 @@
 <body>
     <canvas id="areaDibujo" width="1000" height="1000"></canvas>
     <script>
+        //movimiento de 2 imagenes al tiempo imagenMetroid + imagenKike
         var canvas = document.getElementById("areaDibujo");
         var ctx = canvas.getContext("2d");
-        var posicionX2 = 1000;
-        var posicionX = 0;
-        var posicionY1 = 0;
-        var posicionY2= 1000;
-        var posicionBradX= 0
-        var posicionBradY= 0
-        var imageKickbuttowski = new Image();
-        imageKickbuttowski.src = 'https://mir-s3-cdn-cf.behance.net/projects/404/25ecb9174493049.Y3JvcCwxNTg1NSwxMjQwMiw4MjQsMA.jpg';
-        imageKickbuttowski.onload = function () {
-            dibujarKick();
-        }
+        var posicionBrad = 0;
+        var posicionWade = 1000;
+        var posicionKick = 0;
+        var posicionGunther = 1000;
+        var posicionX2Jackie = 0;
+        var posicionY2Jackie = 1000;
+        var imagenWidth = 80;
+        var imagenHeight = 80;
+        var imagenWidth = 80; // Ajusta el ancho de la imagen
+        var imagenHeight = 80;
+        var radio = 200; // Ajusta el radio del círculo
+        var angulo = 0; // Ángulo inicial
 
+        var imagenBrad = new Image();
+        var imagenWade = new Image();
+        var imagenKick = new Image();
+        var imagenGunther = new Image();
+        var imagenJackie = new Image();
+        var imagenBriana = new Image();
 
-        function dibujarKick() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(imageKickbuttowski, posicionX, 255, 100, 100);
-            posicionX += 10;
+        imagenBrad.src = 'file:///C:/Users/JIMMY/Pictures/brad.png';
+        imagenWade.src = 'file:///C:/Users/JIMMY/Pictures/wade.png';
+        imagenKick.src = 'file:///C:/Users/JIMMY/Pictures/kicki.png';
+        imagenGunther.src = 'file:///C:/Users/JIMMY/Pictures/gunther.png';
+        imagenJackie.src = 'file:///C:/Users/JIMMY/Pictures/jackie.png';
+        imagenBriana.src = 'file:///C:/Users/JIMMY/Pictures/briana.png';
 
-            if (posicionX >= canvas.width)
-                posicionX = 0
-        }
-
-        setInterval(dibujarKick, 100);
-
-        var imageGunther = new Image();
-        imageGunther.src = 'https://static.wikia.nocookie.net/kickbuttowski/images/3/3d/Gunther.png/revision/latest?cb=20110721224041&path-prefix=es';
-        imageGunther.onload = function () {
-            dibujarGunther();
-        }
-
-
-        function dibujarGunther() {
-            ctx.drawImage(imageGunther, posicionX2, 200, 100, 100);
-            posicionX2 -= 10;
-
-            if (posicionX2 <= 0) {
-                posicionX2 = 1000;
-            }
-        }
-
-        setInterval(dibujarGunther, 100);
-
-        var imageWade = new Image();
-        imageWade.src = 'https://static.wikia.nocookie.net/kick-buttowski-semidoble-profesional-el-regreso/images/8/83/Wade_2.png/revision/latest/scale-to-width-down/186?cb=20130508180304&path-prefix=es';
-        imageWade.onload = function () {
-            dibujarWade();
-        }
-
-
-        function dibujarWade() {
-            ctx.drawImage(imageWade, 0, posicionY1, 100, 100);
-            posicionY1 += 10;
-
-            if (posicionY1 >= canvas.width) {
-                posicionY1 = 0;
-            }
-        }
-
-        setInterval(dibujarWade, 100);
-
-        var imageJackie = new Image();
-        imageJackie.src = 'https://i.pinimg.com/736x/83/92/4f/83924f1919d98443a8a5574eb0c37774.jpg';
-        imageWade.onload = function () {
-            dibujarJackie();
-        }
-
-
-        function dibujarJackie() {
-            ctx.drawImage(imageJackie, 900, posicionY2, 100, 100);
-            posicionY2 -= 10;
-
-            if (posicionY2 <= 0) {
-                posicionY2 = 1000;
-            }
-        }
-
-        setInterval(dibujarJackie, 100);
-
-        var imageBrad =new Image();
-        imageBrad.src = 'https://static.wikia.nocookie.net/disney/images/9/97/BradButtowski.png/revision/latest?cb=20140103155641&path-prefix=es';
-        imageBrad.onload = function () {
+        imagenBrad.onload = function () {
             dibujarBrad();
         }
-
-
+        imagenWade.onload = function () {
+            dibujarWade();
+        }
+        imagenKick.onload = function () {
+            dibujarKick();
+        }
+        imagenGunther.onload = function () {
+            dibujarGunther();
+        }
+        imagenJackie.onload = function () {
+            dibujarJackie();
+        }
+        imagenBriana.onload = function () {
+            dibujarKike6();
+        }
         function dibujarBrad() {
-            ctx.drawImage(imageBrad, posicionBradX , posicionBradY, 100, 100);
-            posicionBradX+=5;
-            posicionBradY+=5;
-            if (posicionBradX <= 0) {
-                posicionBradY = 1000;
+            ctx.drawImage(imagenBrad, posicionBrad, 450, 80, 80);
+            posicionBrad += 10;
+
+            if (posicionBrad >= 1000) {
+                posicionBrad = 0;
             }
         }
+        function dibujarWade() {
+            ctx.drawImage(imagenWade, posicionWade, 450, 80, 80);
+            posicionWade -= 10;
 
-        setInterval(dibujarBrad, 100);
+            if (posicionWade <= 0) {
+                posicionWade = 1000;
+            }
+        }
+        function dibujarKick() {
+            ctx.drawImage(imagenKick, 450, posicionKick, 80, 80);
+            posicionKick += 10;
+
+            if (posicionKick >= 1000) {
+                posicionKick = 0;
+            }
+        }
+        function dibujarGunther() {
+            ctx.drawImage(imagenGunther, 450, posicionGunther, 80, 80);
+            posicionGunther -= 10;
+
+            if (posicionGunther <= 0) {
+                posicionGunther = 1000;
+            }
+        }
+        function dibujarJackie() {
+            console.log(`posicionX2Jackie: ${posicionX2Jackie}, posicionY2Jackie: ${posicionY2Jackie}`);
+            ctx.drawImage(imagenJackie, posicionX2Jackie, posicionY2Jackie, imagenWidth, imagenHeight);
+            if (posicionY2Jackie > 0 && posicionX2Jackie === 0) {
+                posicionY2Jackie -= 10;
+            } else if (posicionY2Jackie === 0 && posicionX2Jackie < canvas.width - imagenWidth) {
+                posicionX2Jackie += 10;
+            } else if (posicionY2Jackie < canvas.height - imagenHeight && posicionX2Jackie === canvas.width - imagenWidth) {
+                posicionY2Jackie += 10;
+            } else if (posicionY2Jackie === canvas.height - imagenHeight && posicionX2Jackie > 0) {
+                posicionX2Jackie -= 10;
+            }
+            if (posicionX2Jackie === 0 && posicionY2Jackie === canvas.height - imagenHeight) {
+                // Puedes agregar aquí cualquier acción adicional al completar un ciclo.
+            }
+        }
+        function dibujarBriana() {
+            // Coloca la imagen en la mitad del lienzo
+            var xImagen = (canvas.width - imagenWidth) / 2;
+            var yImagen = (canvas.height - imagenHeight) / 2;
+
+            // Calcula las coordenadas del círculo en sentido contrario a las manecillas del reloj
+            var xCirculo = xImagen + imagenWidth / 2 + radio * Math.cos(angulo);
+            var yCirculo = yImagen + imagenHeight / 2 + radio * Math.sin(angulo);
+
+            // Dibuja la imagen en las coordenadas del círculo
+            ctx.drawImage(imagenBriana, xCirculo - imagenWidth / 2, yCirculo - imagenHeight / 2, imagenWidth, imagenHeight);
+
+            // Dibuja el círculo
+            ctx.beginPath();
+            ctx.arc(xCirculo, yCirculo, 5, 0, 2 * Math.PI);
+            ctx.closePath();
+
+            // Incrementa el ángulo para la próxima iteración
+            angulo += 0.05;
+        }
+        function dibujar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            dibujarBrad();
+            dibujarWade();
+            dibujarKick();
+            dibujarGunther();
+            dibujarJackie();
+            dibujarBriana();
+        }
+
+        setInterval(dibujar, 100);
     </script>
-    <!-- <img src="file:///C:/Users/INVITADO10/Desktop/KickButtowski1.jpg"/>    -->
 </body>
 
 </html>
