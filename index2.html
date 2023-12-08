@@ -23,11 +23,11 @@
         canvas {
             border: 10px solid rgb(250, 0, 0);
             background-color: rgb(250, 183, 0);
-            margin-top: 20px; /* Ajusta según sea necesario */
+            margin-top: 20px;
         }
 
         h1 {
-            margin-bottom: 20px; /* Ajusta según sea necesario */
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -48,14 +48,13 @@
         var posicionGunther = 1000;
         var posicionX2Jackie = 0;
         var posicionY2Jackie = 1000;
+        var posicionChicareliX = 900;
+        var posicionChicareliY = 900;
         var imagenWidth = 80;
         var imagenHeight = 80;
-        var imagenWidth = 80; // Ajusta el ancho de la imagen
-        var imagenHeight = 80;
-        var radio = 200; // Ajusta el radio del círculo
-        var angulo = 0; // Ángulo inicial
-        var audioElement = document.getElementById('buttowski-audio');//Audio de buttowski en la pagina
-
+        var radio = 200;
+        var angulo = 0;
+        var audioElement = document.getElementById('buttowski-audio');
 
         var imagenBrad = new Image();
         var imagenWade = new Image();
@@ -63,6 +62,7 @@
         var imagenGunther = new Image();
         var imagenJackie = new Image();
         var imagenBriana = new Image();
+        var imagenChicareli = new Image();
 
         imagenBrad.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/brad.png';
         imagenWade.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/wade.png';
@@ -70,6 +70,7 @@
         imagenGunther.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/gunther.png';
         imagenJackie.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/jackie.png';
         imagenBriana.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/briana.png';
+        imagenChicareli.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/chicareli.png'
 
         imagenBrad.onload = function () {
             dibujarBrad();
@@ -87,8 +88,12 @@
             dibujarJackie();
         }
         imagenBriana.onload = function () {
-            dibujarKike6();
+            dibujarBriana();
         }
+        imagenChicareli.onload = function () {
+            dibujarChicareli();
+        }
+
         function dibujarBrad() {
             ctx.drawImage(imagenBrad, posicionBrad, 450, 80, 80);
             posicionBrad += 10;
@@ -97,6 +102,7 @@
                 posicionBrad = 0;
             }
         }
+
         function dibujarWade() {
             ctx.drawImage(imagenWade, posicionWade, 450, 80, 80);
             posicionWade -= 10;
@@ -105,14 +111,16 @@
                 posicionWade = 1000;
             }
         }
+
         function dibujarKick() {
             ctx.drawImage(imagenKick, 450, posicionKick, 80, 80);
             posicionKick += 10;
 
-            if (posicionKick >= 1000) {
-                posicionKick = 0;
+            if (posicionKick >= 450) {
+                posicionKick = 450;
             }
         }
+
         function dibujarGunther() {
             ctx.drawImage(imagenGunther, 450, posicionGunther, 80, 80);
             posicionGunther -= 10;
@@ -121,6 +129,7 @@
                 posicionGunther = 1000;
             }
         }
+
         function dibujarJackie() {
             console.log(`posicionX2Jackie: ${posicionX2Jackie}, posicionY2Jackie: ${posicionY2Jackie}`);
             ctx.drawImage(imagenJackie, posicionX2Jackie, posicionY2Jackie, imagenWidth, imagenHeight);
@@ -137,26 +146,34 @@
 
             }
         }
+
         function dibujarBriana() {
-            // Coloca la imagen en la mitad del lienzo
             var xImagen = (canvas.width - imagenWidth) / 2;
             var yImagen = (canvas.height - imagenHeight) / 2;
 
-            // Calcula las coordenadas del círculo en sentido contrario a las manecillas del reloj
             var xCirculo = xImagen + imagenWidth / 2 + radio * Math.cos(angulo);
             var yCirculo = yImagen + imagenHeight / 2 + radio * Math.sin(angulo);
 
-            // Dibuja la imagen en las coordenadas del círculo
             ctx.drawImage(imagenBriana, xCirculo - imagenWidth / 2, yCirculo - imagenHeight / 2, imagenWidth, imagenHeight);
 
-            // Dibuja el círculo
             ctx.beginPath();
             ctx.arc(xCirculo, yCirculo, 5, 0, 2 * Math.PI);
             ctx.closePath();
 
-            // Incrementa el ángulo para la próxima iteración
             angulo += 0.05;
         }
+
+        function dibujarChicareli() {
+            ctx.drawImage(imagenChicareli, posicionChicareliX, posicionChicareliY, 80, 80);
+            posicionChicareliX -= 10;
+            posicionChicareliY -= 10;
+
+            if (posicionChicareliY <= 450) {
+                posicionChicareliY = 450;
+                posicionChicareliX = 450;
+            }
+        }
+
         function dibujar() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             dibujarBrad();
@@ -165,16 +182,15 @@
             dibujarGunther();
             dibujarJackie();
             dibujarBriana();
+            dibujarChicareli();
         }
 
         setInterval(dibujar, 100);
 
         audioElement.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/audio/Kick%20Buttowski%20AUDIO.mp3';
 
-
         document.body.appendChild(audioElement);
     </script>
-
 </body>
 
 </html>
