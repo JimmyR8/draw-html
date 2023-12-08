@@ -116,9 +116,12 @@
             ctx.drawImage(imagenKick, 450, posicionKick, 80, 80);
             posicionKick += 10;
 
-            if (posicionKick >= 450) {
-                posicionKick = 450;
+            if (posicionKick >= 1000) {
+                posicionKick = 0;
             }
+
+            detectarColisionKickChicareli();
+
         }
 
         function dibujarGunther() {
@@ -165,12 +168,24 @@
 
         function dibujarChicareli() {
             ctx.drawImage(imagenChicareli, posicionChicareliX, posicionChicareliY, 80, 80);
-            posicionChicareliX -= 10;
-            posicionChicareliY -= 10;
+            posicionChicareliX -= 30;
+            posicionChicareliY -= 30;
 
-            if (posicionChicareliY <= 450) {
-                posicionChicareliY = 450;
+            if (posicionChicareliY <= 0) {
+                posicionChicareliY = 900;
+                posicionChicareliX = 900;
+            }
+        }
+        function detectarColisionKickChicareli() {
+            var colisionKickChicareli = (450 + imagenWidth > posicionChicareliX &&
+                450 < posicionChicareliX + imagenWidth &&
+                posicionKick + imagenHeight > posicionChicareliY &&
+                posicionKick < posicionChicareliY + imagenHeight);
+
+            if (colisionKickChicareli) {
+                posicionKick = 450;
                 posicionChicareliX = 450;
+                posicionChicareliY = 450;
             }
         }
 
