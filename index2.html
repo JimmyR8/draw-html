@@ -7,6 +7,7 @@
     <title>Pag Kick Buttowski characters</title>
     <link rel="stylesheet" href="index2.css">
     <style>
+        /* Estilos CSS para la página */
         body {
             display: flex;
             flex-direction: column;
@@ -33,13 +34,14 @@
 </head>
 
 <body>
+    <!-- Contenido de la página -->
     <div id="container">
         <h1>Kick Buttowski characters in motion</h1>
         <audio id="buttowski-audio" controls></audio>
     </div>
     <canvas id="areaDibujo" width="1000" height="1000"></canvas>
     <script>
-
+        // JavaScript para la animación y lógica del juego
         var canvas = document.getElementById("areaDibujo");
         var ctx = canvas.getContext("2d");
         var posicionBrad = 0;
@@ -64,6 +66,7 @@
         var imagenBriana = new Image();
         var imagenChicareli = new Image();
 
+        // Asignar las rutas de las imágenes
         imagenBrad.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/brad.png';
         imagenWade.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/wade.png';
         imagenKick.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/kicki.png';
@@ -72,6 +75,7 @@
         imagenBriana.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/briana.png';
         imagenChicareli.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/images/chicareli.png'
 
+        // Funciones que se ejecutan cuando las imágenes se cargan
         imagenBrad.onload = function () {
             dibujarBrad();
         }
@@ -94,6 +98,7 @@
             dibujarChicareli();
         }
 
+        // Función para dibujar el personaje Brad en el lienzo
         function dibujarBrad() {
             ctx.drawImage(imagenBrad, posicionBrad, 450, 80, 80);
             posicionBrad += 10;
@@ -103,6 +108,7 @@
             }
         }
 
+        // Función para dibujar el personaje Wade en el lienzo
         function dibujarWade() {
             ctx.drawImage(imagenWade, posicionWade, 450, 80, 80);
             posicionWade -= 10;
@@ -112,6 +118,7 @@
             }
         }
 
+        // Función para dibujar el personaje Kick en el lienzo
         function dibujarKick() {
             ctx.drawImage(imagenKick, 450, posicionKick, 80, 80);
             posicionKick += 10;
@@ -124,6 +131,7 @@
 
         }
 
+        // Función para dibujar el personaje Gunther en el lienzo
         function dibujarGunther() {
             ctx.drawImage(imagenGunther, 450, posicionGunther, 80, 80);
             posicionGunther -= 10;
@@ -133,6 +141,7 @@
             }
         }
 
+        // Función para dibujar el personaje Jackie en el lienzo
         function dibujarJackie() {
             console.log(`posicionX2Jackie: ${posicionX2Jackie}, posicionY2Jackie: ${posicionY2Jackie}`);
             ctx.drawImage(imagenJackie, posicionX2Jackie, posicionY2Jackie, imagenWidth, imagenHeight);
@@ -150,6 +159,7 @@
             }
         }
 
+        // Función para dibujar el personaje Briana en el lienzo
         function dibujarBriana() {
             var xImagen = (canvas.width - imagenWidth) / 2;
             var yImagen = (canvas.height - imagenHeight) / 2;
@@ -166,6 +176,7 @@
             angulo += 0.05;
         }
 
+        // Función para dibujar el personaje Chicareli en el lienzo
         function dibujarChicareli() {
             ctx.drawImage(imagenChicareli, posicionChicareliX, posicionChicareliY, 80, 80);
             posicionChicareliX -= 30;
@@ -176,6 +187,8 @@
                 posicionChicareliX = 900;
             }
         }
+
+        // Función para detectar la colisión entre Kick y Chicareli
         function detectarColisionKickChicareli() {
             var colisionKickChicareli = (450 + imagenWidth > posicionChicareliX &&
                 450 < posicionChicareliX + imagenWidth &&
@@ -183,12 +196,14 @@
                 posicionKick < posicionChicareliY + imagenHeight);
 
             if (colisionKickChicareli) {
+                // Detener ambas imágenes
                 posicionKick = 450;
                 posicionChicareliX = 450;
                 posicionChicareliY = 450;
             }
         }
 
+        // Función principal de dibujo, se ejecuta en un bucle
         function dibujar() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             dibujarBrad();
@@ -200,10 +215,13 @@
             dibujarChicareli();
         }
 
+        // Configurar la ejecución del bucle de dibujo
         setInterval(dibujar, 100);
 
+        // Configurar la ruta del archivo de audio
         audioElement.src = 'file:///C:/Users/JIMMY/Documents/VSCODE/GITCLONE/draw-html/audio/Kick%20Buttowski%20AUDIO.mp3';
 
+        // Añadir el elemento de audio al cuerpo del documento
         document.body.appendChild(audioElement);
     </script>
 </body>
