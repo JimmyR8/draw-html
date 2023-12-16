@@ -15,6 +15,78 @@
     <script>
         var canvas = document.getElementById("dibujo");
         var ctx = canvas.getContext("2d");
+
+        var posX=0;
+        var posY=0;
+
+        var posGY=0;
+        var posGX=Math.floor(Math.random() * 500);
+
+        var imagenGato = new Image();
+        imagenGato.src='file:///C:/Users/JIMMY/Pictures/Camera%20Roll/Jimmytoo/WhatsApp%20Image%202022-10-18%20at%2018.54.09%20(1).jpeg';
+
+        var imagenPackman = new Image();
+        imagenPackman.src='file:///C:/Users/JIMMY/Pictures/Camera%20Roll/Jimmytoo/WhatsApp%20Image%202022-11-19%20at%2015.08.39.jpeg';
+        imagenPackman.onload = function(){
+            dibujarPacman();
+            dibujarGato();
+        }
+
+        function dibujarGato(){
+            ctx.clearRect(0,0,500,500);
+            
+            ctx.drawImage(imagenGato, posGX, posGY, 50, 50);
+            posGY+=5;
+            if(posGY>=canvas.height-50){
+                clearInterval(moverGato);
+            }
+        }
+        
+        const moverGato = setInterval(dibujarGato, 10);
+
+        function dibujarPacman(){
+            ctx.clearRect(0,0,500,500);
+            ctx.drawImage(imagenPackman, posX, posY, 50, 50);
+        }
+
+        document.addEventListener("keydown",(e)=>{
+            
+            
+            if(e.keyCode == 39){
+                posX+=10;
+            }
+            if(e.keyCode == 37){
+                posX-=10;
+            }
+
+            if(e.keyCode == 40){
+                posY+=10;
+            }
+            if(e.keyCode == 38){
+                posY-=10;
+            }
+
+           
+            if(posX>=(canvas.width-50)){
+                posX=canvas.width-50;  
+                             
+            }
+            if(posX<=0){
+                posX=0;                
+            }
+
+            if(posY<=0)
+            {
+                posY=0;
+            }
+            if(posY>=(canvas.height-50)){
+                posY=canvas.height-50;
+            }
+
+            dibujarPacman();
+
+        })
+
     </script>
 </body>
 </html>
